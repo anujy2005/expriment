@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AtmosGlobe — Live Weather</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/globe.gl"></script>
+</head>
+<body>
+
+  <!-- HUD Header -->
+  <header class="hud-header">
+    <div class="hud-logo">
+      <span class="logo-icon">◉</span>
+      <span class="logo-text">ATMOS<span class="accent">GLOBE</span></span>
+    </div>
+    <div class="hud-status">
+      <span class="status-dot"></span>
+      <span id="status-text">LIVE FEED ACTIVE</span>
+    </div>
+    <div class="hud-time" id="hud-time">--:--:--</div>
+  </header>
+
+  <!-- Search Panel -->
+  <div class="search-panel">
+    <div class="search-tabs">
+      <button class="tab active" onclick="setMode('city')">CITY</button>
+      <button class="tab" onclick="setMode('state')">STATE</button>
+      <button class="tab" onclick="setMode('country')">COUNTRY</button>
+    </div>
+
+    <div class="search-row">
+      <div class="search-box">
+        <span class="search-icon">⌖</span>
+        <input type="text" id="input-main" placeholder="Enter city name..." autocomplete="off">
+        <div id="mode-badge" class="mode-badge">CITY</div>
+      </div>
+      <div class="search-box secondary" id="state-country-box" style="display:none">
+        <span class="search-icon">◈</span>
+        <input type="text" id="input-country" placeholder="Country (e.g. India)..." autocomplete="off">
+      </div>
+      <button class="search-btn" onclick="doSearch()">
+        <span>SCAN</span>
+        <span class="btn-arrow">▶</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Globe -->
+  <div id="globe-container">
+    <div id="globe"></div>
+    <div class="globe-overlay-ring"></div>
+  </div>
+
+  <!-- Info Panel -->
+  <div class="info-panel" id="info-panel">
+    <div class="panel-header">
+      <span class="panel-title" id="panel-location-name">—</span>
+      <button class="panel-close" onclick="closePanel()">✕</button>
+    </div>
+    <div id="panel-content" class="panel-content"></div>
+  </div>
+
+  <!-- Points Legend -->
+  <div class="legend">
+    <div class="legend-item"><span class="dot cold"></span> Cold &lt;10°C</div>
+    <div class="legend-item"><span class="dot mild"></span> Mild 10–25°C</div>
+    <div class="legend-item"><span class="dot hot"></span> Hot &gt;25°C</div>
+  </div>
+
+  <!-- Scan lines overlay -->
+  <div class="scanlines"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
