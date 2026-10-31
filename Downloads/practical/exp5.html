@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 2px solid black;
+            height: 500px;
+        }
+        h1{
+            text-align: center;
+        }
+        button{
+            padding: 20px;
+            color:blue;
+            background-color: greenyellow;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+<h1>
+    Dom Manipulation 
+</h1>
+<h2 id="h1">Welcome to Dom</h2>
+<ul id="a1">
+    <li>Html</li>
+    <li>css</li>
+</ul>
+<button onclick="changeText()">Change Text</button>
+<button onclick="changecolor()">Change color</button>
+<button onclick="Additem()">Additem</button>
+<button onclick="Removeitem()">Remove item</button>
+
+    </div>
+    <script>
+        function changeText()
+        {
+            document.getElementById("h1").innerText="Welcome to Javascript"
+        }
+        function changecolor()
+        {
+           let e= document.getElementById("container");
+            e.style.background="red"
+        }
+        function Additem()
+        {
+            let newtext=document.getElementById('a1');
+        let li=document.createElement("li");
+        li.textContent=prompt("Enter the item")
+        newtext.appendChild(li)
+        }
+        function Removeitem()
+        {
+            let li=document.getElementById("a1");
+            li.lastElementChild.remove()
+        }
+    </script>
+</body>
+</html>

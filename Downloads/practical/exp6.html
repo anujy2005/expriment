@@ -1,0 +1,101 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Application</title>
+</head>
+<body>
+
+    <h2>Product Application</h2>
+
+    <label>Product Name:</label>
+    <input type="text" id="name"><br><br>
+
+    <label>Price:</label>
+    <input type="number" id="price"><br><br>
+
+    <label>Quantity:</label>
+    <input type="number" id="quantity"><br><br>
+
+    <button onclick="createProduct()">Create Product</button>
+    <button onclick="updateProduct()">Update Product</button>
+    <button onclick="showProduct()">Show Product</button>
+
+    <h3>Product Details</h3>
+    <p id="output"></p>
+
+    <script>
+        // Store product information
+        let product = {};
+
+        // Arrow function to calculate total price
+        let calculatePrice = (price, quantity) => price * quantity;
+
+        // Create product
+        function createProduct() {
+            product = {
+                name: document.getElementById("name").value,
+                price: Number(document.getElementById("price").value),
+                quantity: Number(document.getElementById("quantity").value)
+            };
+
+            alert("Product Created!");
+            // showProduct();
+        }
+
+        // Update product using spread operator
+        function updateProduct() {
+            product = {
+                ...product,
+                name: document.getElementById("name").value,
+                price: Number(document.getElementById("price").value),
+                quantity: Number(document.getElementById("quantity").value)
+            };
+
+            alert("Product Updated!");
+            showProduct();
+        }
+
+        // Rest operator
+        let total = (...prices) =>
+            prices.reduce((sum, p) => sum + p, 0);
+
+        // Show product using destructuring and template literals
+        function showProduct() {
+            if (!product.name) {
+                document.getElementById("output").innerHTML =
+                    "Please create a product first.";
+                return;
+            }
+
+            let { name, price, quantity } = product;
+
+            document.getElementById("output").innerHTML = `
+                Product Name: ${name}<br>
+                Price: ₹${price}<br>
+                Quantity: ${quantity}<br>
+                Total Price: ₹${calculatePrice(price, quantity)}<br>
+                Sum of Multiple Prices: ₹${total(100, 200, 300)}
+            `;
+        }
+
+        // Async/Await example
+        async function getProduct() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve("Product data fetched successfully!");
+                }, 1000);
+            });
+        }
+
+        async function fetchProduct() {
+            let result = await getProduct();
+            console.log(result);
+        }
+
+        fetchProduct();
+    </script>
+
+</body>
+</html>
+```

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>welcome to expriment</h1>
+<div class="p1">
+    <p id="result"></p>
+</div>
+<button onclick="showstudent()">click Me</button>
+<script>
+    
+    let name=['Auj','aman','alok'];
+    let div=['a','b','c'];
+    let course=['IT','COMP','AIML']
+    function showstudent()
+
+    {
+        let output='';
+for(let i=0;i<name.length;i++)
+{ output+=
+"<b>Name</b>"+name[i]+"<br>"+
+"<b>Div</b>"+div[i]+"<br>"+
+"<b>course</b>"+course[i]+"<br>";
+
+}document.getElementById("result").innerHTML=output;
+
+    }
+</script>
+</body>
+</html>
